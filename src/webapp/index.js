@@ -6,6 +6,7 @@ var state = {
   isLoading: true,
 
   // injected at build time
+  // COOGAN: HARDCODED FAUCET ADDRESS?
   faucetAddress: process.env.FAUCET_ADDRESS,
   faucetBalance: null,
 
@@ -51,6 +52,7 @@ function updateStateFromNetwork () {
   renderApp()
 }
 
+// COOGAN: NETWORK CALLED HERE
 function getNetwork () {
   global.provider.sendAsync({ id: 1, jsonrpc: '2.0', method: 'net_version' }, function (err, res) {
     if (err) return console.error(err)
@@ -197,6 +199,9 @@ function renderApp () {
           })
         ])
       ]),
+
+// COOGAN: NEED TO CHANGE THIS HARDCODED ETHERSCAN HTML ADDRESS. I think we can do it using a simple, ${networkName} variable
+// i.e. `https://${networkName}.etherscan.io/tx/${txHash}`
 
       h('div.panel.panel-default', [
         h('div.panel-heading', [

@@ -13,6 +13,7 @@ const destPath = path.join(__dirname, '/../../build/app.js')
 const bundler = browserify()
 
 // inject faucet address
+// COOGAN: HARDCODED FAUCET ADDRESS? It's okay because the faucet address is the same across all networks. Won't need to change this.
 bundler.transform(envify({
   FAUCET_ADDRESS: address
 }))
